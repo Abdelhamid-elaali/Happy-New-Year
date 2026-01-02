@@ -5,12 +5,10 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import ClickSpark from "@/components/click-spark"
-import dynamic from 'next/dynamic'
+
 import { usePerformance } from "@/hooks/use-performance"
 
-const HyperspeedBackground = dynamic(() => import('@/components/hyperspeed-background'), {
-    ssr: false
-})
+
 
 export default function EnterPage() {
     const { isLowPower, reduceMotion } = usePerformance()
@@ -54,17 +52,12 @@ export default function EnterPage() {
     }
 
     const isValid = name.trim().length > 0 && name.trim().length <= 20
-    const showHyperspeed = !isLowPower && !reduceMotion
+
 
     return (
         <ClickSpark sparkColor="#ffffff" sparkSize={12} sparkRadius={20} sparkCount={8} duration={500}>
             <main className="relative w-full min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
-                {/* Hyperspeed Background or Fallback */}
-                {showHyperspeed ? (
-                    <HyperspeedBackground />
-                ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-950/50 to-blue-950/50" />
-                )}
+                <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-950/50 to-blue-950/50" />
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

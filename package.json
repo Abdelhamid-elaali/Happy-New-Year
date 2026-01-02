@@ -10,7 +10,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@appletosolutions/reactbits": "^1.0.3",
     "@chakra-ui/react": "^2.10.4",
     "@emotion/is-prop-valid": "latest",
     "@emotion/react": "^11.14.0",
