@@ -10,6 +10,11 @@ A premium, full-stack web application that creates a personalized journey into 2
 3. **Experience** (`/experience`): Personalized countdown with your name and mood
 4. **Celebration**: Confetti animation at midnight!
 
+### ⚡ Performance & Visuals
+- **LCP Optimized**: Critical content paints instantly on all devices.
+- **Lazy Loading**: Heavy 3D components (`Iridescence`, `Three.js`) are loaded dynamically.
+- **Responsive Layout**: Optimized for mobile and desktop screens.
+
 ### 🎭 Mood System
 Each mood delivers a unique visual experience:
 
@@ -100,7 +105,8 @@ components/
 ├── ballpit.tsx                # Ambitious mood
 ├── splash-cursor.tsx          # Calm mood
 ├── blob-cursor.tsx            # Bold mood
-└── light-rays.tsx             # Minimal mood
+├── light-rays.tsx             # Minimal mood
+├── iridescence.tsx            # Entry page background
 
 lib/
 ├── prisma.ts                  # Database client

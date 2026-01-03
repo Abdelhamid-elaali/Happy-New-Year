@@ -7,6 +7,12 @@ import { motion } from "framer-motion"
 import ClickSpark from "@/components/click-spark"
 
 import { usePerformance } from "@/hooks/use-performance"
+import dynamic from 'next/dynamic'
+
+const Iridescence = dynamic(() => import('@/components/iridescence'), {
+    ssr: false,
+    loading: () => <div className="absolute inset-0 bg-black/90" /> // Lightweight fallback
+})
 
 
 
@@ -57,7 +63,14 @@ export default function EnterPage() {
     return (
         <ClickSpark sparkColor="#ffffff" sparkSize={12} sparkRadius={20} sparkCount={8} duration={500}>
             <main className="relative w-full min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
-                <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-950/50 to-blue-950/50" />
+                <div className="absolute inset-0 z-0">
+                    <Iridescence
+                        color={[0.1, 0.1, 0.1]}
+                        mouseReact={false}
+                        amplitude={0.1}
+                        speed={1.0}
+                    />
+                </div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -68,7 +81,7 @@ export default function EnterPage() {
                     <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl cursor-default">
                         <motion.h1
                             className="text-6xl md:text-7xl font-black text-center mb-2 bg-gradient-to-r from-white via-blue-200 to-purple-200 text-transparent bg-clip-text font-[family-name:var(--font-google-sans-code)] tracking-tighter"
-                            initial={{ opacity: 0, y: -20 }}
+                            initial={{ opacity: 1, y: 0 }} // LCP Optimization: Visible immediately
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1, duration: 0.6 }}
                         >

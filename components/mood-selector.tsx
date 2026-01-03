@@ -3,8 +3,10 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import MoodCard from "./mood-card"
-import ThreeBackground from "./three-background"
 import ShinyText from "./shiny-text"
+import dynamic from "next/dynamic"
+
+const ThreeBackground = dynamic(() => import("./three-background"), { ssr: false })
 
 interface MoodSelectorProps {
   onMoodSelect: (mood: string) => void

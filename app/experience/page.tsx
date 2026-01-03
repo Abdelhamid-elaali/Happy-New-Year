@@ -4,10 +4,12 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { ArrowLeft } from "lucide-react"
-import ThreeBackground from "@/components/three-background"
 import Countdown from "@/components/countdown"
 import TextType from "@/components/text-type"
 import Confetti from "@/components/confetti"
+import dynamic from "next/dynamic"
+
+const ThreeBackground = dynamic(() => import("@/components/three-background"), { ssr: false })
 
 type Mood = "ambitious" | "calm" | "bold" | "minimal"
 
@@ -70,7 +72,7 @@ export default function ExperiencePage() {
       {hasReached && <Confetti mood={mood} />}
 
       {/* Content */}
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 pt-24 md:pt-0 max-w-7xl mx-auto">
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 pt-32 max-w-7xl mx-auto">
         {/* Main message */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
